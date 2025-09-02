@@ -1,33 +1,34 @@
-# Quora Insincere question
+# Deep Learning for Pharma Sales Prediction with PyTorch
 
-Deep learning code repository
+Crisp mini-course for practitioners who know Python and basic ML but are new to deep learning with PyTorch.
 
-Cyclic learning rate: https://arxiv.org/pdf/1506.01186.pdf
+## Quickstart (Windows, CPU only)
+```bash
+py -m venv .venv
+.\.venv\Scripts\activate
+pip install --upgrade pip
+pip install -r requirements.txt
+python .\data\make_synthetic_data.py
+jupyter notebook
+```
+Run the three notebooks in `prework/` first, then open the session notebooks in `session/`.
 
-It is known that the learning rate is the most important hyper-parameter to tune for training deep neural networks. This paper describes a new method for setting the learning rate, named cyclical learning rates, which practically eliminates the need to experimentally ﬁnd the best values and schedule for the global learning rates. 
+## Modules and Outcomes
+| Module | Notebook/Resource | Time | Outcome |
+|---|---|---|---|
+|Pre-work 1|`prework/00_install_check.ipynb`|5 min|Verify Python & PyTorch install|
+|Pre-work 2|`prework/01_pytorch_basics.ipynb`|15 min|Tensor ops & tiny model|
+|Pre-work 3|`prework/02_data_shapes_and_dataloaders.ipynb`|15 min|Understand batch shapes|
+|Live Intro|`session/10_intro_sales_dl_slides.md`|10 min|DL vs baselines|
+|Live Model 1|`session/11_cnn_timeseries_sales.ipynb`|25 min|1D-CNN for sales|
+|Live Model 2|`session/12_rnn_lstm_sales.ipynb`|25 min|LSTM for sales|
+|Exercise|`exercises/01_regularization_and_metrics.md`|15 min|Improve generalization|
+|Exercise|`exercises/02_feature_ablation.md`|15 min|Feature importance|
 
-# References
-
-model structure & clr from https://www.kaggle.com/shujian/single-rnn-with-4-folds-clr
-hidden size 256 from https://www.kaggle.com/artgor/text-modelling-in-pytorch
-speed up pre-processing from https://www.kaggle.com/syhens/speed-up-your-preprocessing
-the idea to reduce oov from https://www.kaggle.com/christofhenkel/how-to-preprocessing-when-using-embeddings
-
-misspell dictionary & punctuations from https://www.kaggle.com/theoviel/improve-your-score-with-some-text-preprocessing
-
-latex cleaning from https://www.kaggle.com/sunnymarkliu/more-text-cleaning-to-increase-word-coverage
-pytorch text processing routines from https://github.com/howardyclo/pytorch-seq2seq-example/blob/master/seq2seq.ipynb
-capsule from https://www.kaggle.com/spirosrap/bilstm-attention-kfold-clr-extra-features-capsule
-DeepMoji from https://github.com/bfelbo/DeepMoji/blob/master/deepmoji/attlayer.py
-
-# Performance
-
-fast geometric ensemble from https://arxiv.org/abs/1802.10026. It gives a consistant and significant boost in both LB score and CV score for various models when combined with a learnable embedding.
-semi-supervised ensemble similar to Malware Classification Challenge 1st solution. Marginal significance can be observed with a large test set. it doesn't bring me any benefits in the 2nd stage.
-"mix up" embeddings. The idea is to randomly choose a linear combination between two embeddings rather than simple averaging. Though no significant improvement can be observed, I still keep it in my solution as regularization.
-speed
-bucket iterator. similar to the one in torchtext. It runs twice as fast as static padding.
-miscs
-speed up capsule. 
-load embedding file with pandas. It saves ~80 seconds per embedding. 
-reduce oov by replacing oov word with its capitized, upper, lower version if available. The final oov rate is about 7.5%. 
+## Checklist
+- [ ] ✅ Windows venv created and requirements installed
+- [ ] ✅ Synthetic data generated (`data/*.csv`)
+- [ ] ✅ Pre-work notebooks completed error-free
+- [ ] ✅ Ran CNN notebook and captured metrics/plots
+- [ ] ✅ Ran LSTM notebook and compared with CNN
+- [ ] ✅ Completed at least one exercise and reviewed solution
